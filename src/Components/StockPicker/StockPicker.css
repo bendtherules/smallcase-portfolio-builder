@@ -29,8 +29,9 @@
   height: 2.5em;
   padding: 0.5em;
   padding-left: 1em;
-  border: 1px solid #000;
   color: #00A9D2;
+  box-shadow: 0 0 0.5em 0 rgba(0, 0, 0, 0.20);
+  border-radius: 0.25em;
 }
 
 .stock-picker .page-content {
