@@ -1,6 +1,6 @@
 # Smallcase portfolio Builder
 
-Hpsted at https://portfolio-builder.netlify.com/
+Hosted at https://portfolio-builder.netlify.com/
 
 ![Portfolio Builder Screenshot](./screen.png)
 
