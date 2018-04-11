@@ -1,0 +1,19 @@
+.section-title {
+    position: relative;
+}
+
+.section-title .title-box {
+    display: inline-block;
+    font-size: 1em;
+    padding: 1em 1.25em;
+}
+
+.section-title .title-tail {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 1em;
+    height: 1.5em;
+    border-top: 1.5em solid transparent;
+    border-left: 1em solid transparent;
+}

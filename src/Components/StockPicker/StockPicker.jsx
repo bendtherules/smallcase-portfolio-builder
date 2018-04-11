@@ -1,6 +1,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import './StockPicker.css';
+import { SectionTitle } from '../SectionTitle';
 
 class StockPicker extends Component {
   constructor() {
@@ -75,16 +76,6 @@ class StockPicker extends Component {
     return currentPageScripPrices;
   }
 
-  static renderTitle() {
-    return (
-      <div className="title">
-        <div className="title-box">
-          PICK STOCKS
-        </div>
-        <div className="title-tail" />
-      </div>
-    );
-  }
 
   renderScripBoxes() {
     const currentPageScripPrices = this.getCurrentPageScripPrices();
@@ -161,7 +152,7 @@ class StockPicker extends Component {
 
     return (
       <div className="stock-picker">
-        {StockPicker.renderTitle()}
+        <SectionTitle titleText="Pick Stocks" />
         <div className="body">
           <div className="page-description">
             {

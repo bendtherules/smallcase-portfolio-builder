@@ -1,8 +1,13 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import './PortfolioManager.css';
+import { SectionTitle } from '../SectionTitle';
 
 class PortfolioManager extends Component {
+  constructor() {
+    super();
+  }
+
   render() {
     const portfolioScripPrices = this.props.portfolioScripPrices;
 
@@ -15,6 +20,8 @@ class PortfolioManager extends Component {
           this.props.addScripToPortfolio(scripName);
         }}
       >
+        <SectionTitle titleText="Manage Portfolio" />
+
         <div className="drop-block" style={{ width: '100%', height: '500px', border: '1px solid black' }} />
         Please drop here
         <ul>

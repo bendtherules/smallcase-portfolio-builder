@@ -1,0 +1,13 @@
+.portfolio-manager {
+    margin: 2em 0;
+}
+
+.portfolio-manager .section-title .title-box {
+    color: #FFFFFF;
+    background-color: #287DCE;
+    box-shadow: .35em .35em rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-manager .section-title .title-tail {
+    border-top: 1.5em solid #15569C;
+}

@@ -1,24 +1,15 @@
-.stock-picker .title {
-  position: relative;
-  font-size: 1em;
-  color: #FFFFFF;
+.stock-picker {
+  margin: 2em 0;
 }
 
-.stock-picker .title .title-box {
-  display: inline-block;
-  padding: 1em 1.25em;
+.stock-picker .section-title .title-box {
+  color: #FFFFFF;
   background-color: #00B3D6;
   box-shadow: .35em .35em rgba(0, 0, 0, 0.1);
 }
 
-.stock-picker .title .title-tail {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 1em;
-  height: 1.5em;
+.stock-picker .section-title .title-tail {
   border-top: 1.5em solid #098DAD;
-  border-left: 1em solid transparent;
 }
 
 .stock-picker .body {
@@ -112,7 +103,7 @@
   visibility: hidden;
 }
 
-.stock-picker .page-nav{
+.stock-picker .page-nav {
   width: 100%;
 }
 
