@@ -100,7 +100,7 @@ class StockPicker extends Component {
                 </div>
                 <div className="scrip-details">
                   <div className="scrip-price">
-                    <span className="rupee-sign">₹ </span>
+                    <span className="rupee-sign">₹</span>
                     {Math.round(currentPageScripPrices[scripName])}
                   </div>
                   <button

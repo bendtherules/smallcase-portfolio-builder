@@ -8,6 +8,29 @@ class PortfolioManager extends Component {
     super();
   }
 
+  calcNetWorth() {
+    let netWorth = 0;
+    Object.keys(this.props.portfolioScripCounts).forEach((scripName) => {
+      const count = this.props.portfolioScripCounts[scripName];
+      const price = this.props.portfolioScripPrices[scripName];
+      netWorth += (price * count);
+    });
+
+    return netWorth;
+  }
+
+  weightInPortfolio(scripName) {
+    const count = this.props.portfolioScripCounts[scripName];
+    const price = this.props.portfolioScripPrices[scripName];
+    const weight = ((count * price) / this.calcNetWorth()) * 100;
+
+    if (Number.isNaN(weight)) {
+      return 0;
+    }
+
+    return weight;
+  }
+
   render() {
     const portfolioScripPrices = this.props.portfolioScripPrices;
 
@@ -22,21 +45,86 @@ class PortfolioManager extends Component {
       >
         <SectionTitle titleText="Manage Portfolio" />
 
-        <div className="drop-block" style={{ width: '100%', height: '500px', border: '1px solid black' }} />
-        Please drop here
-        <ul>
-          {
-            Object.keys(portfolioScripPrices).map((scripName) => {
-              return (
-                <li
-                  key={scripName}
-                >
-                  {scripName} | {portfolioScripPrices[scripName]}
-                </li>
-              );
-            })
-          }
-        </ul>
+        <div className="body">
+          <div className="portfolio-editor">
+            <div className="editor-header">
+              <div className="section-stock">
+                STOCK
+              </div>
+              <div className="section-price">
+                PRICE
+              </div>
+              <div className="section-shares">
+                SHARES
+              </div>
+              <div className="section-weight">
+                WEIGHT
+              </div>
+              <div className="section-remove-btn">
+
+              </div>
+              <div className="clearfix" />
+            </div>
+            <div className="editor-body">
+              {
+                Object.keys(portfolioScripPrices).map((scripName) => {
+                  return (
+                    <div
+                      className="scrip-line-item"
+                      key={scripName}
+                    >
+                      <div className="section-stock">
+                        {scripName}
+                      </div>
+                      <div className="section-price">
+                        <span className="rupee-sign">₹</span>
+                        {Math.round(this.props.portfolioScripPrices[scripName])}
+                      </div>
+                      <div className="section-shares">
+                        <button
+                          className="shares-decrement-btn"
+                          disabled={
+                            this.props.portfolioScripCounts[scripName] <= 1
+                          }
+                          onClick={() => { this.props.addPortfolioScripCount(scripName, -1); }}
+                        >
+                          <span className="btn-text">-</span>
+                        </button>
+                        <span className="shares-value">
+                          {this.props.portfolioScripCounts[scripName]}
+                        </span>
+                        <button
+                          className="shares-increment-btn"
+                          onClick={() => { this.props.addPortfolioScripCount(scripName, +1); }}
+                        >
+                          <span className="btn-text">+</span>
+                        </button>
+                      </div>
+                      <div className="section-weight">
+                        {
+                          Math.round(this.weightInPortfolio(scripName))
+                        }
+                        %
+                      </div>
+                      <div className="section-remove-btn">
+                        <button onClick={() => { this.props.removeScripFromPortfolio(scripName); }}>
+                          <span className="btn-text">-</span>
+                        </button>
+                      </div>
+                      <div className="clearfix" />
+                    </div>
+                  );
+                })
+              }
+
+            </div>
+          </div>
+          <div className="portfolio-overview">
+
+          </div>
+          <div className="clearfix"></div>
+        </div>
+
       </div>
     );
   }

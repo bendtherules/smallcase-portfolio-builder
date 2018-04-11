@@ -11,3 +11,122 @@
 .portfolio-manager .section-title .title-tail {
     border-top: 1.5em solid #15569C;
 }
+
+.portfolio-manager .body {
+    margin-left: 1em;
+    margin-bottom: 2em;
+    padding: 1em;
+}
+
+.portfolio-manager .portfolio-editor, .portfolio-manager .portfolio-overview {
+    float: left;
+}
+
+.portfolio-manager .portfolio-editor {
+    width: 45%;
+    padding-right: 1em;
+}
+
+.portfolio-manager .portfolio-overview {
+    width: 55%;
+    padding-left: 1em;
+}
+
+.portfolio-manager .editor-header, .portfolio-manager .editor-body {
+    width: 100%;
+}
+
+.portfolio-manager .editor-header {
+    background-color: #8FB9E7;
+    color: white;
+    padding: 1em 0;
+}
+
+.portfolio-manager .editor-body {
+    box-shadow: 0 0 .25em 0 rgba(0, 0, 0, 0.20);
+    border-radius: .25em;
+    min-height: 5em;
+    padding-bottom: 2em;
+}
+
+.portfolio-manager .editor-body .scrip-line-item {
+    padding: .5em 0;
+}
+
+.portfolio-manager .section-stock, .portfolio-manager .section-price, .portfolio-manager .section-shares, .portfolio-manager .section-weight {
+    float: left;
+    padding: 0.25em;
+}
+
+.portfolio-manager .section-stock {
+    width: 35%;
+    padding-left: 1em;
+}
+
+.portfolio-manager .section-shares {
+    width: 23%;
+}
+
+.portfolio-manager .section-price, .portfolio-manager .section-weight {
+    width: 17%;
+}
+
+.portfolio-manager .section-remove-btn {
+    float: left;
+    width: 8%;
+}
+
+.portfolio-manager .editor-body .section-stock {
+    padding-left: 1.5em;
+    color: #287DCE;
+}
+
+.portfolio-manager .editor-body .section-remove-btn {
+    text-align: center;
+}
+
+.portfolio-manager .editor-body .section-price, .portfolio-manager .editor-body .section-weight {
+    text-align: right;
+    padding-right: 0.5em;
+}
+
+.portfolio-manager button {
+    position: relative;
+    width: 1em;
+    height: 1em;
+}
+
+/* +,-,remove Button styles */
+
+.portfolio-manager button .btn-text {
+    position: absolute;
+    font-size: 1em;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.portfolio-manager .section-shares {
+    border-radius: .25em;
+}
+
+.portfolio-manager .section-shares>* {
+    display: block;
+    float: left;
+    width: 33.33%;
+    height: 1.25em;
+    border: 1px solid #DDDDDD;
+}
+
+.portfolio-manager .section-shares .btn-text {
+    color: #287DCE;
+}
+
+.portfolio-manager .section-shares .shares-value {
+    text-align: center;
+}
+
+/* Rupee styling */
+.portfolio-manager .rupee-sign {
+    font-family: PingFangSC-Light, serif;
+  }

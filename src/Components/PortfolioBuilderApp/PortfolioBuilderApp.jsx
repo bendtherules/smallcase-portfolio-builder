@@ -21,6 +21,8 @@ class PortfolioBuilderApp extends Component {
     };
 
     this.addScripToPortfolio = this.addScripToPortfolio.bind(this);
+    this.removeScripFromPortfolio = this.removeScripFromPortfolio.bind(this);
+    this.addPortfolioScripCount = this.addPortfolioScripCount.bind(this);
   }
 
   addScripToPortfolio(scripName) {
@@ -32,7 +34,7 @@ class PortfolioBuilderApp extends Component {
 
         const oldPortfolioScripCounts = oldState.portfolioScripCounts;
         const newPortfolioScripCounts = deepCloneNaive(oldPortfolioScripCounts);
-        newPortfolioScripCounts[scripName] = newPortfolioScripCounts[scripName] || 0;
+        newPortfolioScripCounts[scripName] = newPortfolioScripCounts[scripName] || 1;
 
         return {
           portfolioScripPrices: newPortfolioScripPrices,
@@ -61,6 +63,21 @@ class PortfolioBuilderApp extends Component {
     }
   }
 
+  addPortfolioScripCount(scripName, incrementBy) {
+    this.setState((oldState) => {
+      if (scripName in this.state.portfolioScripPrices) {
+        const oldPortfolioScripCounts = oldState.portfolioScripCounts;
+        const newPortfolioScripCounts = deepCloneNaive(oldPortfolioScripCounts);
+        newPortfolioScripCounts[scripName] += incrementBy;
+
+        return {
+          portfolioScripCounts: newPortfolioScripCounts,
+        };
+      }
+      return {};
+    });
+  }
+
   calcRemainingScripPrices() {
     const remainingScripPrices = {};
     Object.keys(this.allScripPrices).forEach((scripName) => {
@@ -86,7 +103,10 @@ class PortfolioBuilderApp extends Component {
           />
           <PortfolioManager
             portfolioScripPrices={this.state.portfolioScripPrices}
+            portfolioScripCounts={this.state.portfolioScripCounts}
             addScripToPortfolio={this.addScripToPortfolio}
+            removeScripFromPortfolio={this.removeScripFromPortfolio}
+            addPortfolioScripCount={this.addPortfolioScripCount}
           />
         </div>
       </div>
