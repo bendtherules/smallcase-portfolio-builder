@@ -11,6 +11,8 @@ class PortfolioBuilderApp extends Component {
     super(props);
 
     this.allScripPrices = data.price;
+    this.allScripEPS = data.eps;
+
     this.state = {
       portfolioScripPrices: {
         // scrip name : current price
@@ -102,6 +104,7 @@ class PortfolioBuilderApp extends Component {
             addScripToPortfolio={this.addScripToPortfolio}
           />
           <PortfolioManager
+            allScripEPS={this.allScripEPS}
             portfolioScripPrices={this.state.portfolioScripPrices}
             portfolioScripCounts={this.state.portfolioScripCounts}
             addScripToPortfolio={this.addScripToPortfolio}
