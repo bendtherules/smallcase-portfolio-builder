@@ -12,6 +12,7 @@ class PortfolioBuilderApp extends Component {
 
     this.allScripPrices = data.price;
     this.allScripEPS = data.eps;
+    this.allScripHistorical = data.historical;
 
     this.state = {
       portfolioScripPrices: {
@@ -106,6 +107,7 @@ class PortfolioBuilderApp extends Component {
           <PortfolioManager
             allScripEPS={this.allScripEPS}
             portfolioScripPrices={this.state.portfolioScripPrices}
+            allScripHistorical={this.allScripHistorical}
             portfolioScripCounts={this.state.portfolioScripCounts}
             addScripToPortfolio={this.addScripToPortfolio}
             removeScripFromPortfolio={this.removeScripFromPortfolio}

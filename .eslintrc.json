@@ -17,6 +17,8 @@
         ],
         "react/jsx-boolean-value": "off",
         "react/sort-comp": "off",
-        "jsx-a11y/interactive-supports-focus": "off"
+        "jsx-a11y/interactive-supports-focus": "off",
+        "react/prop-types": "off",
+        "no-plusplus": "off"
     }
 }

@@ -1,12 +1,17 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
+import FusionCharts from 'fusioncharts';
+import Charts from 'fusioncharts/fusioncharts.charts';
+import ReactFC from 'react-fusioncharts';
+import Ocean from 'fusioncharts/themes/fusioncharts.theme.ocean';
 import './PortfolioManager.css';
 import { SectionTitle } from '../SectionTitle';
 
+// Pass fusioncharts as a dependency of charts
+Charts(FusionCharts);
+Ocean(FusionCharts);
+
 class PortfolioManager extends Component {
-  constructor() {
-    super();
-  }
 
   calcNetWorth() {
     let netWorth = 0;
@@ -53,6 +58,61 @@ class PortfolioManager extends Component {
     return weight;
   }
 
+  calcPriceChartData() {
+    const portfolioScripCounts = this.props.portfolioScripCounts;
+    const allScripHistorical = this.props.allScripHistorical;
+
+    const portfolioScripNames = Object.keys(portfolioScripCounts);
+
+    const chartData = [];
+
+    if (portfolioScripNames.length > 0) {
+      const dateCount = allScripHistorical[portfolioScripNames[0]].point.length;
+
+
+      for (let dateIndex = 0; dateIndex < dateCount; dateIndex++) {
+        let datePriceSum = 0;
+
+        portfolioScripNames.forEach((scripName) => {
+          const tmpPrice = allScripHistorical[scripName].point[dateIndex].price;
+          const count = portfolioScripCounts[scripName];
+          datePriceSum += (tmpPrice * count);
+        });
+
+        chartData.push({
+          label: dateIndex.toString(),
+          value: datePriceSum,
+        });
+      }
+    }
+
+    return chartData;
+  }
+
+  calcHistoricalChartConfig() {
+    const tmpDataSource = {
+      chart: {
+        numberPrefix: '₹',
+        chartLeftMargin: 0,
+        chartRightMargin: 0,
+        showValues: 0,
+        setAdaptiveYMin: 1,
+        theme: 'ocean',
+      },
+      data: this.calcPriceChartData(),
+    };
+
+    const chartConfigs = {
+      type: 'area2d',
+      width: '100%',
+      height: 300,
+      dataFormat: 'json',
+      dataSource: tmpDataSource,
+    };
+
+    return chartConfigs;
+  }
+
   renderPortfolioEditor() {
     const portfolioScripPrices = this.props.portfolioScripPrices;
     const portfolioScripCounts = this.props.portfolioScripCounts;
@@ -72,9 +132,7 @@ class PortfolioManager extends Component {
           <div className="section-weight">
             WEIGHT
           </div>
-          <div className="section-remove-btn">
-
-          </div>
+          <div className="section-remove-btn" />
           <div className="clearfix" />
         </div>
         <div className="editor-body">
@@ -143,6 +201,7 @@ class PortfolioManager extends Component {
         </div>
         <div className="overview-body">
           <div className="overview-chart">
+            <ReactFC {...this.calcHistoricalChartConfig()} />
           </div>
           <div className="overview-details">
             <div className="overview-card card-stocks">
@@ -195,7 +254,7 @@ class PortfolioManager extends Component {
         <div className="body">
           {this.renderPortfolioEditor()}
           {this.renderPortfolioOverview()}
-          <div className="clearfix"></div>
+          <div className="clearfix" />
         </div>
 
       </div>
