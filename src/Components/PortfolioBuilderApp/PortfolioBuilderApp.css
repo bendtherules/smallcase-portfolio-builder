@@ -1,0 +1,21 @@
+.portfolio-builder-app {
+  width: 100%;
+  height: 100%;
+}
+
+.portfolio-builder-app>.header-bar {
+  width: 100%;
+  height: 3em;
+  background-image: linear-gradient(-90deg, #2BC4DD 0%, #3489D1 100%);
+}
+
+.portfolio-builder-app>.body {
+  padding: 2em; 
+}
+
+.portfolio-builder-app>.body>.title {
+  font-size: 2em;
+  color: #17BCD9;
+
+  padding-bottom: 1em;
+}
