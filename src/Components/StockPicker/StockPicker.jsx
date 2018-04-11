@@ -150,7 +150,7 @@ class StockPicker extends Component {
         >
           Next
         </button>
-        <div className="clearfix"></div>
+        <div className="clearfix" />
       </div>
     );
   }
@@ -164,7 +164,9 @@ class StockPicker extends Component {
         {StockPicker.renderTitle()}
         <div className="body">
           <div className="page-description">
-            Showing <b>{startEnd[0]} - {Math.min(startEnd[1], countTotal)}</b> of <b>{countTotal}</b> matching stocks
+            {
+              // eslint-disable-next-line max-len
+            } Showing {startEnd[0]} - {Math.min(startEnd[1], countTotal)} of {countTotal} matching stocks
           </div>
           <div className="filter">
             APPLY FILTERS
