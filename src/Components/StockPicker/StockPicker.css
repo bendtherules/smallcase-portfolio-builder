@@ -46,6 +46,7 @@
   padding: 1.5em 1em;
   box-shadow: 0 0 0.5em 0 rgba(0, 0, 0, 0.20);
   border-radius: 0.25em;
+  cursor: move;
 }
 
 .stock-picker .page-content .scrip-box>* {
