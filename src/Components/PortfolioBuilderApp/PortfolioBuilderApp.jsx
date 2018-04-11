@@ -13,6 +13,10 @@ class PortfolioBuilderApp extends Component {
     this.allScripPrices = data.price;
     this.state = {
       portfolioScripPrices: {
+        // scrip name : current price
+      },
+      portfolioScripCount: {
+        // scrip name : units in portfolio
       },
     };
 
