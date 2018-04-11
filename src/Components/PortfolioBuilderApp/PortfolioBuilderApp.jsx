@@ -15,7 +15,7 @@ class PortfolioBuilderApp extends Component {
       portfolioScripPrices: {
         // scrip name : current price
       },
-      portfolioScripCount: {
+      portfolioScripCounts: {
         // scrip name : units in portfolio
       },
     };
@@ -30,8 +30,32 @@ class PortfolioBuilderApp extends Component {
         const newPortfolioScripPrices = deepCloneNaive(oldPortfolioScripPrices);
         newPortfolioScripPrices[scripName] = this.allScripPrices[scripName];
 
+        const oldPortfolioScripCounts = oldState.portfolioScripCounts;
+        const newPortfolioScripCounts = deepCloneNaive(oldPortfolioScripCounts);
+        newPortfolioScripCounts[scripName] = newPortfolioScripCounts[scripName] || 0;
+
         return {
           portfolioScripPrices: newPortfolioScripPrices,
+          portfolioScripCounts: newPortfolioScripCounts,
+        };
+      });
+    }
+  }
+
+  removeScripFromPortfolio(scripName) {
+    if ((scripName in this.allScripPrices) && (scripName in this.state.portfolioScripPrices)) {
+      this.setState((oldState) => {
+        const oldPortfolioScripPrices = oldState.portfolioScripPrices;
+        const newPortfolioScripPrices = deepCloneNaive(oldPortfolioScripPrices);
+        delete newPortfolioScripPrices[scripName];
+
+        const oldPortfolioScripCounts = oldState.portfolioScripCounts;
+        const newPortfolioScripCounts = deepCloneNaive(oldPortfolioScripCounts);
+        delete newPortfolioScripCounts[scripName];
+
+        return {
+          portfolioScripPrices: newPortfolioScripPrices,
+          portfolioScripCounts: newPortfolioScripCounts,
         };
       });
     }
