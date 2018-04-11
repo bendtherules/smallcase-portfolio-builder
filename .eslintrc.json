@@ -1,0 +1,22 @@
+{
+    "extends": "airbnb",
+    "env": {
+        "browser": true,
+        "jest": true
+    },
+    "rules": {
+        "import/prefer-default-export": "off",
+        "linebreak-style": "off",
+        "indent": [
+            "error",
+            2
+        ],
+        "arrow-body-style": [
+            "error",
+            "always"
+        ],
+        "react/jsx-boolean-value": "off",
+        "react/sort-comp": "off",
+        "jsx-a11y/interactive-supports-focus": "off"
+    }
+}
