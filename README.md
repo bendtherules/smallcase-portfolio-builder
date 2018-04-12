@@ -6,7 +6,7 @@ Hosted at https://portfolio-builder.netlify.com/
 
 ## Dev setup
 
-### To set up the environment dependencies ( node version 5++ )
+### To set up the environment dependencies
 
 ```
 $ npm install
